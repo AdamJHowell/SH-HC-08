@@ -1,5 +1,3 @@
-#include <SoftwareSerial.h>
-
 #define RxD 10
 #define TxD 11
 #define throttlePin 13
@@ -36,6 +34,7 @@ void loop()
     // Set the throttle LED.
     if ( servoPrefix == 't' )
     {
+      digitalWrite( throttlePin, HIGH );
       if ( servoValue > 127 )
       {
         digitalWrite( throttlePin, HIGH );
@@ -43,6 +42,7 @@ void loop()
       else if ( servoValue < 128 )
       {
         digitalWrite( throttlePin, LOW );
+        digitalWrite( throttlePin, HIGH );
       }
     }
     // Set the collective LED.
@@ -70,5 +70,5 @@ void loop()
       }
     }
   }
-  delay( 1000 );
+  delay( 100 );
 }
